@@ -15,6 +15,8 @@ https://zenn.dev/jdbtisk/articles/e6ed54b38b6a45
 4. black (formatter)
 5. isort (formatter)
 6. taskipy (task runner)
+7. sphinx (documentation)
+8. pytest (test, optional)
 
 ### Python
 
