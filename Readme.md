@@ -15,8 +15,6 @@ https://zenn.dev/jdbtisk/articles/e6ed54b38b6a45
 4. black (formatter)
 5. isort (formatter)
 6. taskipy (task runner)
-7. sphinx (documentation)
-8. pytest (test, optional)
 
 ### Python
 
@@ -27,18 +25,19 @@ https://zenn.dev/jdbtisk/articles/e6ed54b38b6a45
 3. pip install poetry (use PowerShell on administrator mode)
 4. Make project directory
 5. Open VScode and choose the above project directory
-6. Make src directory and main.py and \_\_init\_\_.py in src directory
-7. Make common and engine direcotry in src and \_\_init\_\_.py in common and engine direcotry for original modules
-8. Open Git bash terminal
-9. Go to Git Preparation
-10. Make virsutal environment by poetry
+6. Copy and paste template into the above project directory (you can skip No.7, 8, 10 and 12 to 14 if you use the template)
+7. Make src directory and main.py and \_\_init\_\_.py in src directory
+8. Make common and engine direcotry in src and \_\_init\_\_.py in common and engine direcotry for original modules
+9. Open Git bash terminal in VScode
+10. Go to Git Preparation
+11. Make virsutal environment by poetry
 
 ```bash
 poetry init # pyproject.toml output, you can skip if you have pyproject.toml
 poetry install # poery.lock output and make virtual environment as .venv
 ```
 
-9. Install development library
+12. Install development library
 
 ```bash
 poetry add -D flake8
@@ -50,7 +49,7 @@ poetry add -D Sphinx sphinx-rtd-theme sphinx-pyproject
 poetry add lxml # for mypyreport output
 ```
 
-10. Install flake8 plugin
+13. Install flake8 plugin
 
 ```bash
 poetry add -D pyproject-flake8
@@ -62,7 +61,7 @@ poetry add -D flake8-unused-arguments
 poetry add -D pep8-naming
 ```
 
-11. Go to taskipy setting
+14. Go to Setting
 
 ### Setting
 
@@ -283,12 +282,12 @@ test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 1. git init on terminal
 2. Make .gitignore file
 3. Copy and paste the below Python.gitignore template into .gitignore
-https://github.com/github/gitignore/blob/main/Python.gitignore
+   https://github.com/github/gitignore/blob/main/Python.gitignore
 4. Copy and paste User setting as below into .gitignore
+
 ```bash
 # User
 mypyreport/
-docs/
 .vscode/
 ```
 
