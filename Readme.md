@@ -17,6 +17,7 @@ https://zenn.dev/jdbtisk/articles/e6ed54b38b6a45
 6. taskipy (task runner)
 7. sphinx (documentation)
 8. pytest (test, optional)
+9. pyinstaller (build exe file)
 
 ### Python
 
@@ -48,6 +49,7 @@ poetry add -D black
 poetry add -D isort
 poetry add -D taskipy
 poetry add -D Sphinx sphinx-rtd-theme sphinx-pyproject
+poetry add -D pyinstaller
 poetry add lxml # for mypyreport output
 ```
 
@@ -86,6 +88,7 @@ lint-black = "black --check src"
 test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 docs = "task clean-docs && sphinx-apidoc -F -o docs/source src && sphinx-build docs/source docs/build"
 clean-docs = "rm -rf docs/build && cd docs/source && rm -rf *.rst make.bat Makefile _build _static _templates && cd ../.."
+build = "pyinstaller src/main.py --onefile"
 ```
 
 2. Command
@@ -236,6 +239,16 @@ poetry run task docs  # can use task command if you set taskipy
 
 Refer to below
 https://qiita.com/simonritchie/items/49e0813508cad4876b5a
+
+#### pyinstaller
+
+- Command
+```bash
+poetry run pyinstaller src/main.py --onefile
+poetry run pyinstaller src/main.py --onefile --noconsole # if no standard output
+poetry run task build
+```
+
 
 ### Optional setting
 
