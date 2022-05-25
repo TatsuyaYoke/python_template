@@ -36,6 +36,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
 dev = "python src/main.py"
+fmt-lint = "task fmt && task lint"
 fmt = "task fmt-black && task fmt-isort"
 fmt-black = "black src"
 fmt-isort = "isort src"
