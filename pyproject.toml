@@ -7,8 +7,6 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
-lxml = "^4.8.0"
-
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
 isort = "^5.10.1"
@@ -31,6 +29,7 @@ pytest-mock = "^3.7.0"
 pytest-cov = "^3.0.0"
 pyinstaller = "^5.1"
 pre-commit = "^2.19.0"
+lxml = "^4.8.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -65,8 +64,6 @@ profile = "black"
 
 [tool.mypy]
 ignore_missing_imports = true
-html_report = "mypyreport"
-any_exprs_report = "mypyreport"
 
 [project]
 name = "python-template"
