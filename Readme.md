@@ -18,7 +18,6 @@ https://zenn.dev/jdbtisk/articles/e6ed54b38b6a45
 7. sphinx (documentation)
 8. pytest (test, optional)
 9. pyinstaller (build exe file)
-
 ### Python
 
 #### Preparation
@@ -30,14 +29,14 @@ https://zenn.dev/jdbtisk/articles/e6ed54b38b6a45
 5. Open VScode and choose the above project directory
 6. Copy and paste template into the above project directory (you can skip No.7, 8, 10 and 12 to 14 if you use the template)
 7. Make src directory and main.py and \_\_init\_\_.py in src directory
-8. Make common and engine direcotry in src and \_\_init\_\_.py in common and engine direcotry for original modules
+8. Make common and engine directory in src and \_\_init\_\_.py in common and engine directory for original modules
 9. Open Git bash terminal in VScode
 10. Go to Git Preparation
-11. Make virsutal environment by poetry
+11. Make virtual environment by poetry
 
 ```bash
 poetry init # pyproject.toml output, you can skip if you have pyproject.toml
-poetry install # poery.lock output and make virtual environment as .venv
+poetry install # poetry.lock output and make virtual environment as .venv
 ```
 
 12. Install development library
@@ -89,6 +88,7 @@ test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 docs = "task clean-docs && sphinx-apidoc -F -o docs/source src && sphinx-build docs/source docs/build"
 clean-docs = "rm -rf docs/build && cd docs/source && rm -rf *.rst make.bat Makefile _build _static _templates && cd ../.."
 build = "pyinstaller src/main.py --onefile"
+test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 ```
 
 2. Command
@@ -135,7 +135,7 @@ line-length = 160
 
 ```bash
 poetry run black src
-poetry run black --ckeck src # not format, only check
+poetry run black --check src # not format, only check
 poetry run task fmt-black # can use task command if you set taskipy
 ```
 
@@ -231,11 +231,13 @@ poetry run task docs  # can use task command if you set taskipy
 
 ##### Docstring
 
-1. Prameters (Required)
+1. Parameters (Required)
 2. Returns (Required)
-3. Examples (Required)
-4. Erros (Optional)
+3. Examples (Recommended)
+4. Errors (Optional)
 5. Notes (Optional)
+
+If you install autoDocstring of VScode extension, you can use shortcut key (Ctrl + Shift + 2) to output template.
 
 Refer to below
 https://qiita.com/simonritchie/items/49e0813508cad4876b5a
@@ -243,23 +245,34 @@ https://qiita.com/simonritchie/items/49e0813508cad4876b5a
 #### pyinstaller
 
 - Command
+
 ```bash
 poetry run pyinstaller src/main.py --onefile
 poetry run pyinstaller src/main.py --onefile --noconsole # if no standard output
 poetry run task build
 ```
 
-
 ### Optional setting
 
 #### pytest
 
-1. Make direcotry tests
+1. Make directory tests and conftest.py in tests directory as below
+
+```python
+import os
+import sys
+
+sys.path.append(os.path.abspath(f"{os.path.dirname(os.path.abspath(__file__))}/../src/"))
+
+```
+
 2. Install library
 
 ```bash
 poetry add -D pytest pytest-mock pytest-cov
 ```
+
+3. Make test file (file name prefix needs to be test\_)
 
 4. Command
 
@@ -275,13 +288,18 @@ poetry run task test # can use task command if you set taskipy
 test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 ```
 
+6. Test report
+
+- Can see test results on terminal
+- Coverage results is in htmlcov directory
+
 ### VScode
 
 #### Preparation
 
 1. Install VScode
 2. Install Git and bash
-3. Set Git bash as a defalut terminal
+3. Set Git bash as a default terminal
 4. Install extension
 
 #### Extension
@@ -303,7 +321,6 @@ test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 ```bash
 # User
 mypyreport/
-.vscode/
 ```
 
 #### Setting
@@ -326,6 +343,27 @@ mypyreport/
   "python.linting.mypyArgs": ["--strict", "--ignore-missing-imports"],
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
-  }
+  },
+  "autoDocstring.docstringFormat": "numpy",
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "strict",
+  "cSpell.words": [
+    "synspective
+  ]
+}
+```
+
+#### Recommended Extensions
+
+Recommended extensions are as below and this file is put in .vscode directory.
+
+```json
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "njpwerner.autodocstring",
+    "streetsidesoftware.code-spell-checker"
+  ]
 }
 ```

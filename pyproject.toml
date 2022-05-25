@@ -48,6 +48,7 @@ lint-black = "black --check src"
 docs = "task clean-docs && sphinx-apidoc -F -o docs/source src && sphinx-build docs/source docs/build"
 clean-docs = "rm -rf docs/build && cd docs/source && rm -rf *.rst make.bat Makefile _build _static _templates && cd ../.."
 build = "pyinstaller src/main.py --onefile"
+test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 
 [tool.flake8]
 max-line-length = 160
