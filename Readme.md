@@ -18,6 +18,8 @@ https://zenn.dev/jdbtisk/articles/e6ed54b38b6a45
 7. sphinx (documentation)
 8. pytest (test, optional)
 9. pyinstaller (build exe file)
+10. pre-commit (check before commit)
+
 ### Python
 
 #### Preparation
@@ -49,7 +51,7 @@ poetry add -D isort
 poetry add -D taskipy
 poetry add -D Sphinx sphinx-rtd-theme sphinx-pyproject
 poetry add -D pyinstaller
-poetry add lxml # for mypyreport output
+poetry add -D lxml # for mypyreport output
 ```
 
 13. Install flake8 plugin
@@ -75,6 +77,8 @@ poetry add -D pep8-naming
 ```
 [tool.taskipy.tasks]
 dev = "python src/main.py"
+fmt-lint = "task fmt && task lint"
+fmt-lint-strictest = "task fmt && task lint-strictest"
 fmt = "task fmt-black && task fmt-isort"
 fmt-black = "black src"
 fmt-isort = "isort src"
@@ -82,9 +86,10 @@ lint = "task lint-black && task lint-flake8 && task lint-mypy"
 lint-strictest = "task lint-black && task lint-flake8 && task lint-mypy-strictest"
 lint-flake8 = "pflake8 src"
 lint-mypy = "mypy --strict src"
+lint-mypy-report = "mypy --strict src --html-report mypyreport --any-exprs-report mypyreport"
 lint-mypy-strictest = "mypy --strict src --disallow-any-expr"
+lint-mypy-strictest-report = "mypy --strict src --disallow-any-expr --html-report mypyreport --any-exprs-report mypyreport"
 lint-black = "black --check src"
-test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 docs = "task clean-docs && sphinx-apidoc -F -o docs/source src && sphinx-build docs/source docs/build"
 clean-docs = "rm -rf docs/build && cd docs/source && rm -rf *.rst make.bat Makefile _build _static _templates && cd ../.."
 build = "pyinstaller src/main.py --onefile"
@@ -162,8 +167,6 @@ poetry run task fmt-isort # can use task command if you set taskipy
 ```bash
 [tool.mypy]
 ignore_missing_imports = true
-html_report = "mypyreport"
-any_exprs_report = "mypyreport"
 ```
 
 2. Command
@@ -242,6 +245,9 @@ If you install autoDocstring of VScode extension, you can use shortcut key (Ctrl
 Refer to below
 https://qiita.com/simonritchie/items/49e0813508cad4876b5a
 
+
+### Optional setting
+
 #### pyinstaller
 
 - Command
@@ -251,8 +257,6 @@ poetry run pyinstaller src/main.py --onefile
 poetry run pyinstaller src/main.py --onefile --noconsole # if no standard output
 poetry run task build
 ```
-
-### Optional setting
 
 #### pytest
 
@@ -292,6 +296,54 @@ test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 
 - Can see test results on terminal
 - Coverage results is in htmlcov directory
+
+#### pre-commit
+
+1. Make .pre-commit-config.yaml as below
+```yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-added-large-files
+      - id: check-toml
+      - id: check-yaml
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.942
+    hooks:
+    - id: mypy
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-isort
+          - flake8-bugbear
+          - flake8-builtins
+          - flake8-eradicate
+          - flake8-pytest-style
+          - flake8-unused-arguments
+          - pep8-naming
+```
+2. Install Library and settings
+```bash
+poetry add -D pre-commit
+poetry run pre-commit install
+```
 
 ### VScode
 
