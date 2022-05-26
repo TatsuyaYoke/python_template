@@ -12,7 +12,50 @@ def add(x: int, y: int) -> int:
     int
         Result of integer addition
     """
-    return x + y
+    return (
+        x
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+        + y
+    )
 
 
 def main(name: str) -> int:
