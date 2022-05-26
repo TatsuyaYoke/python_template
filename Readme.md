@@ -419,3 +419,53 @@ Recommended extensions are as below and this file is put in .vscode directory.
   ]
 }
 ```
+
+### Neo Vim
+
+https://wonwon-eater.com/vscode-nvim/
+
+1. Chocolately install
+
+- Use PowerShell Administrator mode and install
+Do you want to run the script -> All Yes
+
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
+Check to complete installing successfully
+
+```bash
+choco list -l
+# Chocolatey v0.10.15
+# chocolatey 0.10.15
+# 1 packages installed.
+```
+
+2. Neo Vim install
+
+- Use PowerShell Administrator mode and install
+
+```bash
+choco install neovim --pre
+```
+
+- Check to complete installing successfully
+
+```bash
+nvim
+```
+
+- Check path of nvim app
+
+```bash
+gcm nvim
+```
+
+4. VSCode Neovim extension
+
+- VSCode Neovim install
+- Open settings (Ctrl + ,)
+- Search Neovim Executable Paths: Win32
+- Copy and paste nvim path
+- VScode restart
