@@ -120,7 +120,15 @@ max-line-length = 160
 extend-ignore = "E203, W503" # to avoid black conflict
 ```
 
-3. Command
+3. setup.cfg setting for pre-commit (optional)
+
+```bash
+[flake8]
+ignore = E203,W503
+max-line-length = 160
+```
+
+4. Command
 
 ```bash
 poetry run pflake8 src # not use flake8 src to use pyproject setting
@@ -245,7 +253,6 @@ If you install autoDocstring of VScode extension, you can use shortcut key (Ctrl
 Refer to below
 https://qiita.com/simonritchie/items/49e0813508cad4876b5a
 
-
 ### Optional setting
 
 #### pyinstaller
@@ -300,6 +307,7 @@ test = "pytest -s -vv --cov=. --cov-branch --cov-report=html"
 #### pre-commit
 
 1. Make .pre-commit-config.yaml as below
+
 ```yaml
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -321,7 +329,7 @@ repos:
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.942
     hooks:
-    - id: mypy
+      - id: mypy
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
@@ -339,7 +347,9 @@ repos:
           - flake8-unused-arguments
           - pep8-naming
 ```
+
 2. Install Library and settings
+
 ```bash
 poetry add -D pre-commit
 poetry run pre-commit install
@@ -427,7 +437,7 @@ https://wonwon-eater.com/vscode-nvim/
 1. Chocolately install
 
 - Use PowerShell Administrator mode and install
-Do you want to run the script -> All Yes
+  Do you want to run the script -> All Yes
 
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
