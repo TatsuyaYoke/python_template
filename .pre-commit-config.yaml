@@ -4,7 +4,6 @@ repos:
     hooks:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-      - id: end-of-file-fixer
       - id: mixed-line-ending
         args: [--fix=lf]
       - id: check-added-large-files

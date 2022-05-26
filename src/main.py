@@ -36,5 +36,5 @@ def main(name: str) -> int:
 
 if __name__ == "__main__":
 
-    name_length = main("Pyth")
+    name_length = main("Python")
     print(name_length)
