@@ -41,6 +41,21 @@ poetry init # pyproject.toml output, you can skip if you have pyproject.toml
 poetry install # poetry.lock output and make virtual environment as .venv
 ```
 
+##### Make virtualenv in same directory as project
+
+```bash
+poetry config --list
+poetry config virtualenvs.in-project true
+```
+
+##### Delete virtualenv
+
+```bash
+poetry env list
+# poetry-xx-py3.6
+poetry env remove poetry-xx-py3.6
+```
+
 12. Install development library
 
 ```bash
