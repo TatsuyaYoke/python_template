@@ -7,7 +7,7 @@
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "C:/Users/81809/src/git/python_template/.venv/Scripts/pflake8.exe",
-    "python.linting.mypyEnabled": true,
+    "python.linting.mypyEnabled": false,
     "python.linting.mypyPath": "C:/Users/81809/src/git/python_template/.venv/Scripts/mypy.exe",
     "python.linting.mypyArgs": [
         "--strict",
@@ -19,8 +19,13 @@
     "autoDocstring.docstringFormat": "numpy",
     "python.languageServer": "Pylance",
     "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnknownMemberType":"none",
+    },
     "cSpell.words": [
         "synspective",
+        "pydantic",
+        "pandera",
         "lxml",
         "isort",
         "mypy",
