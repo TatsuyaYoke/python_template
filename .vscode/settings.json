@@ -7,10 +7,9 @@
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "C:/Users/81809/src/git/python_template/.venv/Scripts/pflake8.exe",
-    "python.linting.mypyEnabled": false,
+    "python.linting.mypyEnabled": true,
     "python.linting.mypyPath": "C:/Users/81809/src/git/python_template/.venv/Scripts/mypy.exe",
     "python.linting.mypyArgs": [
-        "--strict",
         "--ignore-missing-imports"
     ],
     "editor.codeActionsOnSave": {
@@ -21,6 +20,8 @@
     "python.analysis.typeCheckingMode": "strict",
     "python.analysis.diagnosticSeverityOverrides": {
         "reportUnknownMemberType":"none",
+        "reportUnknownVariableType":"none",
+        "reportMissingTypeStubs": "none"
     },
     "cSpell.words": [
         "synspective",
@@ -60,5 +61,7 @@
         "numpy",
         "virtualenv",
         "virtualenvs",
+        "dotenv",
+        "levelname",
     ],
 }
