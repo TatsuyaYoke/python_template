@@ -9,12 +9,12 @@ LOG_DIR_NAME = "logs"
 
 if getattr(sys, "frozen", False):
     p_this_file = Path(sys.executable)
-    p_parent = p_this_file.resolve().parent
+    p_top = p_this_file.resolve().parent
 else:
     p_this_file = Path(__file__)
-    p_parent = p_this_file.resolve().parent.parent.parent
+    p_top = p_this_file.resolve().parent.parent.parent
 
-P_LOG_DIR = p_parent / LOG_DIR_NAME
+P_LOG_DIR = p_top / LOG_DIR_NAME
 MAX_LOG_COUNT = 20
 
 

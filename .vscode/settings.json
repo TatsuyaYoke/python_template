@@ -21,7 +21,8 @@
     "python.analysis.diagnosticSeverityOverrides": {
         "reportUnknownMemberType":"none",
         "reportUnknownVariableType":"none",
-        "reportMissingTypeStubs": "none"
+        "reportMissingTypeStubs": "none",
+        "reportUnboundVariable": "warning"
     },
     "cSpell.words": [
         "synspective",
