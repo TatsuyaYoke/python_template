@@ -4,7 +4,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Final, Literal, Optional, TypedDict, Union, cast
+from typing import Any, Final, Literal, Optional, TypedDict, cast
 
 import pandas as pd
 import pandera as pa
@@ -139,9 +139,9 @@ def basic_typing_sample() -> None:
     logger.info(type(item5))  # <class 'NoneType'>
 
     # Union
-    item6: Union[int, None] = 1  # Same as Optional
+    item6: int | None = 1  # Same as Optional
     item6 = None
-    item7: Union[int, str] = "string"
+    item7: int | str = "string"
     item7 = 1
     logger.info(type(item6))  # <class 'NoneType'>
     logger.info(type(item7))  # <class 'int'>
@@ -161,7 +161,7 @@ def basic_typing_sample() -> None:
     list1: list[str] = ["a", "b"]  # list1.append(1) -> NG
     list2: list[int] = [1, 2, 3]  # list2.append("a") -> NG
     list3: list[int] = []  # Empty acceptable
-    list4: list[Union[int, str, None]] = ["string", 2, None]
+    list4: list[int | str | None] = ["string", 2, None]
     logger.info(type(list1))  # <class 'list'>
     logger.info(type(list2))  # <class 'list'>
     logger.info(type(list3))  # <class 'list'>
@@ -178,7 +178,7 @@ def basic_typing_sample() -> None:
     # Dict
     dict1: dict[str, int] = {"a": 1, "b": 2}
     dict2: dict[int, str] = {1: "a", 2: "b"}
-    dict3: dict[str, Union[list[str], int]] = {"a": ["aaa", "bbb"], "b": 1}
+    dict3: dict[str, list[str] | int] = {"a": ["aaa", "bbb"], "b": 1}
     logger.info(type(dict1))  # <class 'dict'>
     logger.info(type(dict2))  # <class 'dict'>
     logger.info(type(dict3))  # <class 'dict'>
