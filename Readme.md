@@ -211,11 +211,11 @@ description = "Template for python project"
 readme = "README.md"
 
 [[project.authors]]
-name = "synspective"
+name = "Yoke"
 
 [tool.sphinx-pyproject]
 project = "python-template"
-copyright = "2022, synspective"
+copyright = "2022, Yoke"
 language = "en"
 package_root = "python-template"
 html_theme = "sphinx_rtd_theme"
@@ -425,7 +425,7 @@ mypyreport/
   "python.languageServer": "Pylance",
   "python.analysis.typeCheckingMode": "strict",
   "cSpell.words": [
-    "synspective
+    "Yoke
   ]
 }
 ```
