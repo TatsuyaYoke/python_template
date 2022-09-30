@@ -2,7 +2,7 @@
 name = "python_template"
 version = "0.1.0"
 description = "Template for python project"
-authors = ["synspective"]
+authors = ["Yoke"]
 license = "MIT"
 
 [tool.poetry.dependencies]
@@ -81,11 +81,11 @@ description = "Template for python project"
 readme = "README.md"
 
 [[project.authors]]
-name = "synspective"
+name = "Yoke"
 
 [tool.sphinx-pyproject]
 project = "python-template"
-copyright = "2022, synspective"
+copyright = "2022, Yoke"
 language = "en"
 package_root = "python-template"
 html_theme = "sphinx_rtd_theme"
