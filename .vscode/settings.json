@@ -25,7 +25,6 @@
         "reportUnboundVariable": "warning"
     },
     "cSpell.words": [
-        "synspective",
         "pydantic",
         "pandera",
         "lxml",
